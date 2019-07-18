@@ -1,8 +1,9 @@
 export default {
-  colorBlue: '#114AA1',
-  colorYellow: '#FFD939',
-  colorWhite: '#FFFFFF',
-  colorBlack: '#000000',
+  color1: '#F0EFEA',
+  color2: '#D6D6CD',
+  color3: '#BABAAB',
+  color4: '#8EA078',
+  colorBlack: '#333333',
   fontLight: 'Poppins-Light',
   fontRegular: 'Poppins-Regular',
   fontMedium: 'Poppins-Medium',
