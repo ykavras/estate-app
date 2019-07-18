@@ -3,13 +3,14 @@ import { View, StatusBar, TextInput, ScrollView } from 'react-native';
 import styles from "./styles";
 import SearchSvg from "../../assets/icons/Search";
 import theme from "../../lib/theme";
-import { Category, Product } from "../../components";
+import { Category, Product, Header } from "../../components";
 
 class Listing extends Component {
   render() {
     return (
       <View style={styles.wrapper}>
         <StatusBar barStyle="dark-content" />
+        <Header />
         <View style={styles.content}>
           <View style={styles.shadow} />
           <ScrollView showsVerticalScrollIndicator={false}>
@@ -18,7 +19,7 @@ class Listing extends Component {
               <TextInput
                 style={styles.searchInput}
                 placeholder="Hayalinizdeki konutu arayın"
-                placeholderTextColor={theme.color3}
+                placeholderTextColor={theme.color2}
               />
             </View>
             <View>
@@ -28,10 +29,10 @@ class Listing extends Component {
                 showsHorizontalScrollIndicator={false}
               >
                 <Category title="Tümü" active />
-                <Category title="Konuk" />
+                <Category title="Konut" />
                 <Category title="Ofis" />
                 <Category title="Ticari" />
-                <Category title="Konuk" />
+                <Category title="Konut" />
                 <Category title="Ofis" />
                 <Category title="Ticari" />
               </ScrollView>

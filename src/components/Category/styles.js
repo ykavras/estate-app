@@ -28,13 +28,15 @@ export default StyleSheet.create({
   categoryTitle: {
     marginTop: 6,
     fontFamily: theme.fontSemiBold,
-    color: theme.color4,
+    color: theme.colorBlack,
+    opacity: 0.4,
     textAlign: 'center'
   },
   active: {
-    backgroundColor: theme.color4
+    backgroundColor: theme.color5
   },
   titleActive: {
-    color: theme.colorBlack
+    color: theme.color5,
+    opacity: 1
   }
 });

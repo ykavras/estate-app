@@ -14,7 +14,7 @@ export default StyleSheet.create({
     width: 160,
     height: 180,
     borderRadius: 15,
-    backgroundColor: theme.color3,
+    backgroundColor: theme.color1,
     shadowColor: theme.colorBlack,
     shadowOffset: {
       width: 4,
@@ -33,7 +33,7 @@ export default StyleSheet.create({
   },
   content: {
     flex: 1,
-    backgroundColor: theme.color1,
+    backgroundColor: theme.color3,
     borderTopRightRadius: 15,
     borderBottomRightRadius: 15,
     paddingVertical: 20,
@@ -43,12 +43,12 @@ export default StyleSheet.create({
       width: 4,
       height: 4
     },
-    shadowOpacity: 0.4,
+    shadowOpacity: 0.2,
     shadowRadius: 8,
     elevation: 8
   },
   title: {
-    fontFamily: theme.fontSemiBold,
+    fontFamily: theme.fontBold,
     color: theme.colorBlack,
     fontSize: 18
   },

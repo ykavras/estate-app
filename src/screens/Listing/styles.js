@@ -4,34 +4,33 @@ import theme from '../../lib/theme';
 export default StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor: theme.color1,
-    paddingTop: 120
+    backgroundColor: theme.color1
   },
   content: {
     flex: 1,
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     backgroundColor: theme.color2,
-    shadowColor: theme.color4,
+    shadowColor: theme.colorBlack,
     shadowOffset: {
       width: 0,
       height: -6
     },
-    shadowOpacity: 0.5,
-    shadowRadius: 8,
+    shadowOpacity: 0.2,
+    shadowRadius: 12,
     elevation: 12
   },
   searchWrapper: {
     backgroundColor: theme.color1,
     borderRadius: 15,
-    shadowColor: theme.color4,
+    shadowColor: theme.color1,
     shadowOffset: {
       width: 0,
-      height: 6
+      height: 0
     },
-    shadowOpacity: 0.9,
-    shadowRadius: 8,
-    elevation: 12,
+    shadowOpacity: 0.8,
+    shadowRadius: 4,
+    elevation: 4,
     alignItems: 'center',
     justifyContent: 'center',
     marginHorizontal: 15,
