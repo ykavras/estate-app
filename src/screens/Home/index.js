@@ -1,0 +1,33 @@
+import React, { Component } from 'react';
+import { View, Text, StatusBar } from 'react-native';
+import styles from './styles';
+import { connect } from 'react-redux';
+import { example } from '../../store/actions/example';
+import PropTypes from 'prop-types';
+
+class Home extends Component {
+  render() {
+    return (
+      <View style={styles.wrapper}>
+        <StatusBar barStyle="light-content" />
+        <Text style={styles.text}>ESTATE</Text>
+      </View>
+    );
+  }
+}
+
+Home.propTypes = {
+  example: PropTypes.func.isRequired,
+  exampleToProps: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => {
+  return {
+    exampleToProps: state.exampleReducer
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { example }
+)(Home);
