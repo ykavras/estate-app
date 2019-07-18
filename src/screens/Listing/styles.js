@@ -15,12 +15,11 @@ export default StyleSheet.create({
     shadowColor: theme.color4,
     shadowOffset: {
       width: 0,
-      height: 6
+      height: -6
     },
-    shadowOpacity: 0.9,
+    shadowOpacity: 0.5,
     shadowRadius: 8,
-    elevation: 12,
-    paddingVertical: 30
+    elevation: 12
   },
   searchWrapper: {
     backgroundColor: theme.color1,
@@ -35,7 +34,8 @@ export default StyleSheet.create({
     elevation: 12,
     alignItems: 'center',
     justifyContent: 'center',
-    marginHorizontal: 15
+    marginHorizontal: 15,
+    marginTop: 30
   },
   searchIcon: {
     position: 'absolute',
@@ -57,5 +57,8 @@ export default StyleSheet.create({
   categoryListing: {
     paddingVertical: 30,
     paddingLeft: 15
+  },
+  products: {
+    paddingBottom: 50
   }
 })
