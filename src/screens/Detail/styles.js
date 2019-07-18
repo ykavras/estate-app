@@ -120,5 +120,23 @@ export default StyleSheet.create({
     paddingVertical: 10,
     color: theme.colorBlack,
     paddingHorizontal: 15
+  },
+  panoramaWrapper: {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    right: 0,
+    bottom: 0,
+    width: '100%',
+    height: '100%',
+    backgroundColor: theme.color5,
+    zIndex: 1,
+    elevation: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  webView: {
+    width,
+    height
   }
 });

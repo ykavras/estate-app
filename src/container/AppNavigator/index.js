@@ -32,10 +32,10 @@ const StackNavigator = createStackNavigator(
 const RootNavigator = createSwitchNavigator(
   {
     StackNavigator,
-    Home
+    Listing
   },
   {
-    initialRouteName: "Home"
+    initialRouteName: "Listing"
   }
 );
 

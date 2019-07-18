@@ -10,6 +10,7 @@ import styles from "./styles";
 import Back from "../../assets/icons/Back";
 import Location from "../../assets/icons/Location";
 import Panorama from "../../assets/icons/Panorama";
+import { WebView } from 'react-native-webview';
 
 const HEADER_MAX_HEIGHT = 400;
 const HEADER_MIN_HEIGHT = 230;
@@ -24,13 +25,18 @@ class Detail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      scrollY: new Animated.Value(0)
+      scrollY: new Animated.Value(0),
+      panorama: false
     };
   }
 
+  openPanorama = () => {
+    this.setState({ panorama: !this.state.panorama });
+  };
+
   render() {
     const { goBack } = this.props.navigation;
-    const { scrollY } = this.state;
+    const { scrollY, panorama } = this.state;
     const imageWrapper = scrollY.interpolate({
       inputRange: [0, HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT],
       outputRange: [HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT],
@@ -54,10 +60,16 @@ class Detail extends Component {
     return (
       <View style={styles.wrapper}>
         <TouchableOpacity style={styles.backButon} onPress={() => goBack()}>
-          <Back style={styles.backIcon} />
+          <Back fill={panorama ? "black" : "#616161"} style={styles.backIcon} />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.openPanorama}>
-          <Panorama fill="#616161" style={styles.panoramaIcon} />
+        <TouchableOpacity
+          style={styles.openPanorama}
+          onPress={() => this.openPanorama()}
+        >
+          <Panorama
+            fill={panorama ? 'black' : '#616161'}
+            style={styles.panoramaIcon}
+          />
         </TouchableOpacity>
         <Animated.View style={[styles.imageBox, { height: imageWrapper }]}>
           <Animated.Image
@@ -139,6 +151,16 @@ class Detail extends Component {
         <TouchableOpacity style={styles.makeOffer}>
           <Text style={styles.makeOfferText}>Teklif İste</Text>
         </TouchableOpacity>
+        {panorama ? (
+          <View style={styles.panoramaWrapper}>
+            <WebView
+              style={styles.webView}
+              source={{
+                uri: 'http://estate360.pythonanywhere.com/first-screen',
+              }}
+            />
+          </View>
+        ) : null}
       </View>
     );
   }

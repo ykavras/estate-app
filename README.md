@@ -1,4 +1,4 @@
 # estate-app
 
 
-npx jetify
+yarn jetify
