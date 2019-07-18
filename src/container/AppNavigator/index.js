@@ -4,12 +4,13 @@ import {
   createSwitchNavigator
 } from 'react-navigation';
 import { Animated, Easing } from "react-native";
-import { Home, Listing } from "../../screens";
+import { Home, Listing, Detail } from "../../screens";
 
 const StackNavigator = createStackNavigator(
   {
     Home,
-    Listing
+    Listing,
+    Detail
   },
   {
     headerMode: "none",
@@ -32,10 +33,11 @@ const RootNavigator = createSwitchNavigator(
   {
     StackNavigator,
     Home,
-    Listing
+    Listing,
+    Detail
   },
   {
-    initialRouteName: "Listing"
+    initialRouteName: "Detail"
   }
 );
 

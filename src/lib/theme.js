@@ -5,6 +5,7 @@ export default {
   color4: '#8EA078',
   color5: '#306060',
   colorBlack: '#333333',
+  colorWhite: '#FFFFFF',
   fontLight: 'Poppins-Light',
   fontRegular: 'Poppins-Regular',
   fontMedium: 'Poppins-Medium',

@@ -1,1 +1,4 @@
 # estate-app
+
+
+npx jetify
