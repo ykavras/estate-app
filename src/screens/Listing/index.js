@@ -7,6 +7,7 @@ import { Category, Product, Header } from "../../components";
 
 class Listing extends Component {
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.wrapper}>
         <StatusBar barStyle="dark-content" />
@@ -43,18 +44,22 @@ class Listing extends Component {
                   name="Maslak 1453"
                   category="Toplu Konut"
                   distance="3.8"
+                  image="https://www.pngarts.com/files/4/Building-PNG-Free-Download.png"
+                  onPress={() => navigate("Detail")}
                 />
                 <Product
                   name="Esenyurt 2020"
                   category="Ofis"
                   distance="1.2"
                   image="https://i.ya-webdesign.com/images/transparent-building-condo-6.png"
+                  onPress={() => navigate("Detail")}
                 />
                 <Product
                   name="Şişli 2022"
                   category="Konuk"
                   distance="4.1"
                   image="http://pngimg.com/uploads/building/building_PNG10.png"
+                  onPress={() => navigate("Detail")}
                 />
               </ScrollView>
             </View>

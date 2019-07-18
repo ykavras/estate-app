@@ -83,17 +83,18 @@ export default StyleSheet.create({
   },
   locationBox: {
     flexDirection: 'row',
+    alignItems: 'center'
   },
   location: {
     fontFamily: theme.fontMedium,
     fontSize: 16,
-    color: theme.colorBlack,
+    color: theme.colorBlack
   },
   locationIcon: {
-    width: 16,
+    width: 20,
     height: 20,
     resizeMode: 'contain',
-    marginRight: 10
+    marginRight: 5
   },
   makeOffer: {
     width: 238,

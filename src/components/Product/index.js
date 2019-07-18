@@ -4,9 +4,9 @@ import styles from './styles';
 import LocationSvg from '../../assets/icons/Location';
 
 function Product(props) {
-  const { name, category, distance, image } = props;
+  const { name, category, distance, image, onPress } = props;
   return (
-    <TouchableOpacity style={styles.product}>
+    <TouchableOpacity style={styles.product} onPress={onPress}>
       <View style={styles.imageBox}>
         <Image style={styles.image} source={{ uri: image }} />
       </View>

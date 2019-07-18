@@ -7,6 +7,11 @@ import PropTypes from "prop-types";
 import BuildingIcon from "../../assets/icons/Skyline";
 
 class Home extends Component {
+  componentWillMount() {
+    setTimeout(() => {
+      this.props.navigation.navigate("Listing");
+    }, 100);
+  }
   render() {
     return (
       <View style={styles.wrapper}>

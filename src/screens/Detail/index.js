@@ -3,17 +3,13 @@ import {
   View,
   ScrollView,
   TouchableOpacity,
-  Image,
   Text,
-  Animated,
-  Dimensions
+  Animated
 } from "react-native";
 import styles from "./styles";
 import Back from "../../assets/icons/Back";
 import Location from "../../assets/icons/Location";
 import Panorama from "../../assets/icons/Panorama";
-
-const { width, height } = Dimensions.get('window');
 
 const HEADER_MAX_HEIGHT = 400;
 const HEADER_MIN_HEIGHT = 230;
@@ -28,11 +24,12 @@ class Detail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      scrollY: new Animated.Value(0),
+      scrollY: new Animated.Value(0)
     };
   }
 
   render() {
+    const { goBack } = this.props.navigation;
     const { scrollY } = this.state;
     const imageWrapper = scrollY.interpolate({
       inputRange: [0, HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT],
@@ -56,7 +53,7 @@ class Detail extends Component {
     });
     return (
       <View style={styles.wrapper}>
-        <TouchableOpacity style={styles.backButon}>
+        <TouchableOpacity style={styles.backButon} onPress={() => goBack()}>
           <Back style={styles.backIcon} />
         </TouchableOpacity>
         <TouchableOpacity style={styles.openPanorama}>
@@ -66,11 +63,11 @@ class Detail extends Component {
           <Animated.Image
             style={[
               styles.image,
-              { height: imageBox, marginTop: imageInfoHalf },
+              { height: imageBox, marginTop: imageInfoHalf }
             ]}
             source={{
               uri:
-                "https://www.pngarts.com/files/4/Building-PNG-Free-Download.png"
+                "https://i.ya-webdesign.com/images/transparent-building-condo-6.png",
             }}
           />
           <Animated.View style={[styles.info, { marginTop: imageInfoHalf }]}>

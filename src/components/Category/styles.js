@@ -3,7 +3,8 @@ import theme from '../../lib/theme';
 
 export default StyleSheet.create({
   categoryBtn: {
-    marginRight: 30
+    marginRight: 30,
+    marginLeft: -6
   },
   categoryIconBox: {
     borderRadius: 15,
@@ -11,14 +12,15 @@ export default StyleSheet.create({
     height: 60,
     backgroundColor: theme.color1,
     padding: 10,
-    shadowColor: theme.color4,
+    shadowColor: theme.colorBlack,
     shadowOffset: {
       width: 0,
-      height: 4
+      height: 0
     },
-    shadowOpacity: 0.5,
-    shadowRadius: 4,
-    elevation: 4
+    shadowOpacity: 1,
+    shadowRadius: 6,
+    elevation: 6,
+    marginHorizontal: 6
   },
   categorIcon: {
     width: '100%',
