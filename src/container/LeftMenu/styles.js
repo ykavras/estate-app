@@ -10,11 +10,19 @@ export default StyleSheet.create({
     paddingLeft: 15
   },
   btn: {
-    opacity: 0.5
+    marginVertical: 20,
+    flexDirection: 'row',
+    alignItems: 'center'
   },
   btnTitle: {
     fontFamily: theme.fontSemiBold,
-    fontSize: 18,
+    fontSize: 22,
     color: theme.colorWhite
+  },
+  icon: {
+    width: 20,
+    height: 20,
+    resizeMode: 'contain',
+    marginRight: 10
   }
 })

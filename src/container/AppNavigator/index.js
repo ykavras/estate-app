@@ -1,22 +1,22 @@
-import React, { Component, createRef } from "react";
+import React, { Component, createRef } from 'react';
 import {
   createAppContainer,
   createBottomTabNavigator,
-  createStackNavigator,
-} from "react-navigation";
-import ScalingDrawer from "react-native-scaling-drawer";
-import { Home, Listing, Detail } from "../../screens";
-import LeftMenu from "../LeftMenu";
-import NavigatorService from "../../lib/NavigatorService";
+  createStackNavigator
+} from 'react-navigation';
+import ScalingDrawer from 'react-native-scaling-drawer';
+import { Home, Listing, Detail } from '../../screens';
+import LeftMenu from '../LeftMenu';
+import NavigatorService from '../../lib/NavigatorService';
 
 const Tabs = createBottomTabNavigator(
   {
     Home: {
       screen: Home,
       navigationOptions: {
-        tabBarIcon: ({ focused }) => (focused ? null : null)
-      },
-    },
+        tabBarIcon: ({ focused }) => (focused ? null : null),
+      }
+    }
   },
   {
     tabBarOptions: {
@@ -24,9 +24,9 @@ const Tabs = createBottomTabNavigator(
         display: "none"
       },
       style: {
-        display: "none",
-      },
-    },
+        display: "none"
+      }
+    }
   }
 );
 
@@ -34,16 +34,19 @@ const StackNavigator = createStackNavigator(
   {
     subNavigator: {
       screen: Tabs,
-      navigationOptions: {
-        header: null,
-      },
+      navigationOptions: { header: null },
     },
     Home,
     Listing,
     Detail
   },
   {
-    defaultNavigationOptions: { header: null }
+    headerMode: "none",
+    navigationOptions: { headerVisible: false },
+    mode: "card",
+    defaultNavigationOptions: {
+      gesturesEnabled: false
+    }
   }
 );
 
@@ -53,7 +56,7 @@ export const drawer = createRef();
 
 const defaultScalingDrawerConfig = {
   scalingFactor: 0.8,
-  minimizeFactor: 0.4,
+  minimizeFactor: 0.5,
   swipeOffset: 20
 };
 
