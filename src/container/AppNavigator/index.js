@@ -12,7 +12,7 @@ import NavigatorService from '../../lib/NavigatorService';
 const Tabs = createBottomTabNavigator(
   {
     Home: {
-      screen: Home,
+      screen: Detail,
       navigationOptions: {
         tabBarIcon: ({ focused }) => (focused ? null : null),
       }
@@ -61,10 +61,6 @@ const defaultScalingDrawerConfig = {
 };
 
 class AppNavigation extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentWillReceiveProps(nextProps) {
     const { navigation } = this.props;
     /** Active Drawer Swipe * */

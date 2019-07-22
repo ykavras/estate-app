@@ -10,7 +10,7 @@ import styles from "./styles";
 import Back from "../../assets/icons/Back";
 import Location from "../../assets/icons/Location";
 import Panorama from "../../assets/icons/Panorama";
-import { WebView } from 'react-native-webview';
+import { WebView } from "react-native-webview";
 
 const HEADER_MAX_HEIGHT = 400;
 const HEADER_MIN_HEIGHT = 230;
@@ -40,22 +40,22 @@ class Detail extends Component {
     const imageWrapper = scrollY.interpolate({
       inputRange: [0, HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT],
       outputRange: [HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT],
-      extrapolate: 'clamp',
+      extrapolate: 'clamp'
     });
     const imageBox = scrollY.interpolate({
       inputRange: [0, IMAGE_MAX_HEIGHT - IMAGE_MIN_HEIGHT],
       outputRange: [IMAGE_MAX_HEIGHT, IMAGE_MIN_HEIGHT],
-      extrapolate: 'clamp',
+      extrapolate: 'clamp'
     });
     const imageInfoHalf = scrollY.interpolate({
       inputRange: [0, INFO_HALF - INFO_HALF_MIN],
       outputRange: [INFO_HALF, INFO_HALF_MIN],
-      extrapolate: 'clamp',
+      extrapolate: 'clamp'
     });
     const contextTop = scrollY.interpolate({
       inputRange: [0, CONTEXT_MAX_HEIGHT - CONTEXT_MIN_HEIGHT],
       outputRange: [CONTEXT_MAX_HEIGHT, CONTEXT_MIN_HEIGHT],
-      extrapolate: 'clamp',
+      extrapolate: 'clamp'
     });
     return (
       <View style={styles.wrapper}>
@@ -79,7 +79,7 @@ class Detail extends Component {
             ]}
             source={{
               uri:
-                "https://i.ya-webdesign.com/images/transparent-building-condo-6.png",
+                "https://i.ya-webdesign.com/images/transparent-building-condo-6.png"
             }}
           />
           <Animated.View style={[styles.info, { marginTop: imageInfoHalf }]}>
@@ -156,7 +156,7 @@ class Detail extends Component {
             <WebView
               style={styles.webView}
               source={{
-                uri: 'http://estate360.pythonanywhere.com/first-screen',
+                uri: 'http://estate360.pythonanywhere.com/first-screen'
               }}
             />
           </View>
