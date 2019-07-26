@@ -1,140 +1,195 @@
-import {StyleSheet, Dimensions, Platform} from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import theme from '../../lib/theme';
+import { ifIphoneX } from 'react-native-iphone-x-helper';
 
-const {width, height} = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 
 export default StyleSheet.create({
 	wrapper: {
 		flex: 1,
-		backgroundColor: theme.color3
+		backgroundColor: theme.color1
 	},
-	backButon: {
-		width: 26,
-		height: 26,
-		zIndex: 2,
-		elevation: 2,
-		position: 'absolute',
-		left: 15,
-		top: 40
-	},
-	backIcon: {
-		width: '100%',
-		height: '100%',
-		resizeMode: 'contain'
-	},
-	openPanorama: {
-		position: 'absolute',
-		right: 15,
-		top: 30,
-		width: 50,
-		height: 50,
-		zIndex: 2,
-		elevation: 2
-	},
-	panoramaIcon: {
-		width: '100%',
-		height: '100%',
-		resizeMode: 'contain'
-	},
-	imageBox: {
-		backgroundColor: theme.color1,
-		paddingHorizontal: 15,
-		justifyContent: 'center',
-		alignItems: 'center',
-		overflow: 'visible',
-		zIndex: 1,
-		position: 'absolute',
-		width: '100%',
-		left: 0,
-		top: 0
-	},
-	image: {
-		width: '100%',
-		resizeMode: 'contain',
-		top: 50
-	},
-	info: {
-		width: '100%',
-		backgroundColor: theme.colorWhite,
-		borderRadius: 30,
-		padding: 15,
-		justifyContent: 'space-between',
-		shadowColor: theme.colorBlack,
-		shadowOffset: {
-			width: 0,
-			height: 4
-		},
-		shadowOpacity: 0.4,
-		shadowRadius: 20,
-		elevation: 8,
-		zIndex: 1
-	},
-	name: {
-		fontFamily: theme.fontBold,
-		fontSize: 24,
-		color: theme.colorBlack
-	},
-	category: {
-		fontFamily: theme.fontMedium,
-		fontSize: 14,
-		color: theme.colorBlack,
-		paddingTop: 5,
-		paddingBottom: 10
-	},
-	locationBox: {
-		flexDirection: 'row',
-		alignItems: 'center'
-	},
-	location: {
-		fontFamily: theme.fontMedium,
-		fontSize: 16,
-		color: theme.colorBlack
-	},
-	locationIcon: {
-		width: 20,
-		height: 20,
-		resizeMode: 'contain',
-		marginRight: 5
-	},
-	makeOffer: {
-		width: 238,
-		height: 55,
-		borderRadius: 20,
-		backgroundColor: theme.color5,
-		alignItems: 'center',
-		justifyContent: 'center',
-		position: 'absolute',
-		bottom: 30,
-		alignSelf: 'center',
-		elevation: 1,
-		zIndex: 1
-	},
-	makeOfferText: {
-		fontFamily: theme.fontSemiBold,
-		color: theme.colorWhite,
-		fontSize: 18
-	},
-	description: {
-		fontFamily: theme.fontMedium,
-		fontSize: 16,
-		paddingVertical: 10,
-		color: theme.colorBlack,
-		paddingHorizontal: 15
-	},
-	panoramaWrapper: {
+	topButtons: {
 		position: 'absolute',
 		left: 0,
 		top: 0,
-		width,
-		height: Platform.OS === 'android' ? height - 24 : height,
-		backgroundColor: theme.color5,
+		right: 0,
+		width: '100%',
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'space-between',
+		paddingHorizontal: 15,
 		zIndex: 1,
 		elevation: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
+		...ifIphoneX({
+			paddingTop: 50
+		}, {
+			paddingTop: 30
+		})
 	},
-	webView: {
-		width,
-		height: Platform.OS === 'android' ? height - 24 : height
-	}
+	bottomFix: {
+		position: 'absolute',
+		left: 0,
+		right: 0,
+		bottom: 0,
+		alignItems: 'center',
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		backgroundColor: theme.color1,
+		borderTopWidth: 1,
+		borderTopColor: theme.color2,
+		zIndex: 1,
+		elevation: 1,
+		paddingHorizontal: 15,
+		...ifIphoneX({
+			height: 100,
+			paddingBottom: 10
+		}, {
+			height: 80
+		})
+	},
+	bottomFixInfo: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'center'
+	},
+	bottomFixInfoImg: {
+		width: 60,
+		height: 60,
+		borderRadius: 30,
+		marginRight: 10
+	},
+	bottomFixInfoText: {
+		fontFamily: theme.fontMedium,
+		color: theme.color4,
+		fontSize: 16
+	},
+	bottomFixBtns: {
+		flexDirection: 'row',
+
+	},
+	bottomFixBtn: {
+		width: 50,
+		height: 50,
+		borderRadius: 25,
+		backgroundColor: 'rgb(216,230,244)',
+		padding: 15,
+	},
+	bottomFixBtnIcon: {
+		width: '100%',
+		height: '100%',
+		resizeMode: 'contain'
+	},
+	button: {
+		width: 40,
+		height: 40,
+		borderRadius: 20,
+		backgroundColor: theme.color4,
+		alignItems: 'center',
+		justifyContent: 'center',
+		padding: 10
+	},
+	buttonIcon: {
+		width: '100%',
+		height: '100%',
+		resizeMode: 'contain'
+	},
+	scrollView: {
+		...ifIphoneX({
+			paddingBottom: 100,
+		}, {
+			paddingBottom: 90
+		})
+	},
+	imgWrapper: {
+		height: height / 2,
+		justifyContent: 'flex-end'
+	},
+	img: {
+		position: 'absolute',
+		left: 0,
+		top: 0,
+		right: 0,
+		bottom: 0,
+		width: '100%',
+		height: '100%',
+		resizeMode: 'cover',
+	},
+	imgFooter: {
+		padding: 15,
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'space-between',
+
+	},
+	price: {
+		fontFamily: theme.fontRegular,
+		fontSize: 30,
+		color: theme.color1
+	},
+	btn360: {
+		backgroundColor: theme.color1,
+		alignItems: 'center',
+		justifyContent: 'center',
+		width: 150,
+		height: 50,
+		borderRadius: 30,
+		flexDirection: 'row'
+	},
+	btn360Title: {
+		fontFamily: theme.fontRegular,
+		color: theme.color7,
+		fontSize: 14
+	},
+	btn360Icon: {
+		width: 20,
+		height: 20,
+		resizeMode: 'contain',
+		marginLeft: 5
+	},
+	content: {
+		padding: 15
+	},
+	name: {
+		fontSize: 20,
+		fontFamily: theme.fontMedium,
+		color: theme.color8,
+		paddingBottom: 5
+	},
+	title: {
+		fontSize: 30,
+		fontFamily: theme.fontBold,
+		color: theme.color7,
+		paddingBottom: 5
+	},
+	address: {
+		flexDirection: 'row',
+		alignItems: 'center'
+	},
+	addressText: {
+		fontSize: 16,
+		fontFamily: theme.fontRegular,
+		color: theme.color4
+	},
+	location: {
+		width: 14,
+		height: 14,
+		resizeMode: 'contain',
+		marginRight: 6,
+	},
+	descriptionBox: {},
+	description: {
+		fontFamily: theme.fontRegular,
+		fontSize: 16,
+		paddingTop: 15,
+		color: theme.color5
+	},
+	readMore: {
+		paddingVertical: 10
+	},
+	readMoreTitle: {
+		fontSize: 14,
+		fontFamily: theme.fontMedium,
+		color: theme.color8,
+	},
 });

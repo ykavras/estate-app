@@ -1,169 +1,100 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
-  View,
-  ScrollView,
-  TouchableOpacity,
-  Text,
-  Animated
-} from "react-native";
-import styles from "./styles";
-import Back from "../../assets/icons/Back";
-import Location from "../../assets/icons/Location";
-import Panorama from "../../assets/icons/Panorama";
-import { WebView } from "react-native-webview";
-
-const HEADER_MAX_HEIGHT = 400;
-const HEADER_MIN_HEIGHT = 230;
-const IMAGE_MAX_HEIGHT = 230;
-const IMAGE_MIN_HEIGHT = 100;
-const INFO_HALF = 84;
-const INFO_HALF_MIN = 64;
-const CONTEXT_MAX_HEIGHT = 480;
-const CONTEXT_MIN_HEIGHT = 300;
+	View,
+	StatusBar,
+	TouchableOpacity,
+	Image,
+	Text,
+	ScrollView
+} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+import styles from './styles';
+import theme from '../../lib/theme';
+import DetailImage from '../../assets/img/detail-img.jpg';
+import BackIcon from '../../assets/icons/Back';
+import CubeIcon from '../../assets/icons/Cube';
+import LocationIcon from '../../assets/icons/Location';
+import CallIcon from '../../assets/icons/Call';
+import MessageIcon from '../../assets/icons/Message';
 
 class Detail extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      scrollY: new Animated.Value(0),
-      panorama: false
-    };
-  }
+	constructor(props) {
+		super(props);
+		this.state = {
+			readMore: false
+		};
+	}
 
-  openPanorama = () => {
-    this.setState({ panorama: !this.state.panorama });
-  };
+	readMoreFunc = () => {
+		this.setState({ readMore: true });
+	};
 
-  render() {
-    const { goBack } = this.props.navigation;
-    const { scrollY, panorama } = this.state;
-    const imageWrapper = scrollY.interpolate({
-      inputRange: [0, HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT],
-      outputRange: [HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT],
-      extrapolate: 'clamp'
-    });
-    const imageBox = scrollY.interpolate({
-      inputRange: [0, IMAGE_MAX_HEIGHT - IMAGE_MIN_HEIGHT],
-      outputRange: [IMAGE_MAX_HEIGHT, IMAGE_MIN_HEIGHT],
-      extrapolate: 'clamp'
-    });
-    const imageInfoHalf = scrollY.interpolate({
-      inputRange: [0, INFO_HALF - INFO_HALF_MIN],
-      outputRange: [INFO_HALF, INFO_HALF_MIN],
-      extrapolate: 'clamp'
-    });
-    const contextTop = scrollY.interpolate({
-      inputRange: [0, CONTEXT_MAX_HEIGHT - CONTEXT_MIN_HEIGHT],
-      outputRange: [CONTEXT_MAX_HEIGHT, CONTEXT_MIN_HEIGHT],
-      extrapolate: 'clamp'
-    });
-    return (
-      <View style={styles.wrapper}>
-        <TouchableOpacity style={styles.backButon} onPress={() => goBack()}>
-          <Back fill={panorama ? "black" : "#616161"} style={styles.backIcon} />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.openPanorama}
-          onPress={() => this.openPanorama()}
-        >
-          <Panorama
-            fill={panorama ? 'black' : '#616161'}
-            style={styles.panoramaIcon}
-          />
-        </TouchableOpacity>
-        <Animated.View style={[styles.imageBox, { height: imageWrapper }]}>
-          <Animated.Image
-            style={[
-              styles.image,
-              { height: imageBox, marginTop: imageInfoHalf }
-            ]}
-            source={{
-              uri:
-                "https://i.ya-webdesign.com/images/transparent-building-condo-6.png"
-            }}
-          />
-          <Animated.View style={[styles.info, { marginTop: imageInfoHalf }]}>
-            <Text style={styles.name}>Maslak 1453</Text>
-            <Text style={styles.category}>Toplu konut</Text>
-            <View style={styles.locationBox}>
-              <Location style={styles.locationIcon} />
-              <Text style={styles.location}>Esenyurt / İstanbul</Text>
-            </View>
-          </Animated.View>
-        </Animated.View>
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          scrollEventThrottle={16}
-          onScroll={Animated.event([
-            { nativeEvent: { contentOffset: { y: scrollY } } }
-          ])}
-        >
-          <Animated.View style={{ marginTop: contextTop }} />
-          <Text style={styles.description}>
-            Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır
-            metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat
-            numune kitabı oluşturmak üzere bir yazı galerisini alarak
-            karıştırdığı 1500'lerden beri endüstri standardı sahte metinler
-            olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle
-            kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de
-            sıçramıştır. 1960'larda Lorem Ipsum pasajları da içeren Letraset
-            yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi
-            Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile
-            popüler olmuştur.
-          </Text>
-          <Text style={styles.description}>
-            Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır
-            metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat
-            numune kitabı oluşturmak üzere bir yazı galerisini alarak
-            karıştırdığı 1500'lerden beri endüstri standardı sahte metinler
-            olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle
-            kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de
-            sıçramıştır. 1960'larda Lorem Ipsum pasajları da içeren Letraset
-            yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi
-            Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile
-            popüler olmuştur.
-          </Text>
-          <Text style={styles.description}>
-            Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır
-            metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat
-            numune kitabı oluşturmak üzere bir yazı galerisini alarak
-            karıştırdığı 1500'lerden beri endüstri standardı sahte metinler
-            olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle
-            kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de
-            sıçramıştır. 1960'larda Lorem Ipsum pasajları da içeren Letraset
-            yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi
-            Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile
-            popüler olmuştur.
-          </Text>
-          <Text style={[styles.description, { paddingBottom: 100 }]}>
-            Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır
-            metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat
-            numune kitabı oluşturmak üzere bir yazı galerisini alarak
-            karıştırdığı 1500'lerden beri endüstri standardı sahte metinler
-            olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle
-            kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de
-            sıçramıştır. 1960'larda Lorem Ipsum pasajları da içeren Letraset
-            yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi
-            Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile
-            popüler olmuştur.
-          </Text>
-        </ScrollView>
-        <TouchableOpacity style={styles.makeOffer}>
-          <Text style={styles.makeOfferText}>Teklif İste</Text>
-        </TouchableOpacity>
-        {panorama ? (
-          <View style={styles.panoramaWrapper}>
-            <WebView
-              style={styles.webView}
-              source={{
-                uri: 'http://estate360.pythonanywhere.com/first-screen'
-              }}
-            />
-          </View>
-        ) : null}
-      </View>
-    );
-  }
+	render() {
+		const { readMore } = this.state;
+		return (
+			<View style={styles.wrapper}>
+				<StatusBar barStyle="light-content"/>
+				<View style={styles.topButtons}>
+					<TouchableOpacity style={styles.button}>
+						<BackIcon fill="white" style={styles.buttonIcon}/>
+					</TouchableOpacity>
+					<TouchableOpacity style={styles.button}>
+						<BackIcon fill="white" style={styles.buttonIcon}/>
+					</TouchableOpacity>
+				</View>
+				<View style={styles.bottomFix}>
+					<View style={styles.bottomFixInfo}>
+						<Image source={DetailImage} style={styles.bottomFixInfoImg}/>
+						<Text style={styles.bottomFixInfoText}>Ege Yapım</Text>
+					</View>
+					<View style={styles.bottomFixBtns}>
+						<TouchableOpacity style={[styles.bottomFixBtn, { marginRight: 10 }]}>
+							<MessageIcon fill={theme.color8} style={styles.bottomFixBtnIcon}/>
+						</TouchableOpacity>
+						<TouchableOpacity style={styles.bottomFixBtn}>
+							<CallIcon fill={theme.color8} style={styles.bottomFixBtnIcon}/>
+						</TouchableOpacity>
+					</View>
+				</View>
+				<ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollView}>
+					<View style={styles.imgWrapper}>
+						<Image source={DetailImage} style={styles.img}/>
+						<LinearGradient style={styles.imgFooter} colors={['transparent', theme.color7]}>
+							<Text style={styles.price}>250.000 ₺</Text>
+							<TouchableOpacity style={styles.btn360}>
+								<Text style={styles.btn360Title}>360 Görünüm</Text>
+								<CubeIcon fill="black" style={styles.btn360Icon}/>
+							</TouchableOpacity>
+						</LinearGradient>
+					</View>
+					<View style={styles.content}>
+						<Text style={styles.name}>Maslak 1453</Text>
+						<Text style={styles.title}>Doğayla iç içe bütünleşmiş bir hayat</Text>
+						<View style={styles.address}>
+							<LocationIcon fill={theme.color5} style={styles.location}/>
+							<Text style={styles.addressText}>Göztepe caddesi, İstanbul / Maslak</Text>
+						</View>
+						<View style={[styles.descriptionBox, { height: readMore ? null : 100 }]}>
+							<Text style={styles.description}>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium
+								alias assumenda atque blanditiis consequatur culpa deleniti earum eius excepturi illum, in itaque
+								numquam quia quidem, quod sunt suscipit vero!
+							</Text>
+							{
+								readMore
+									?
+									null
+									:
+									<TouchableOpacity style={styles.readMore} onPress={() => this.readMoreFunc()}>
+										<Text style={styles.readMoreTitle}>Devamını Oku</Text>
+									</TouchableOpacity>
+							}
+						</View>
+					</View>
+				</ScrollView>
+			</View>
+		);
+	}
 }
 
 export default Detail;
