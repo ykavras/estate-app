@@ -74,21 +74,47 @@ class Detail extends Component {
 							<LocationIcon fill={theme.color5} style={styles.location}/>
 							<Text style={styles.addressText}>Göztepe caddesi, İstanbul / Maslak</Text>
 						</View>
-						<View style={[styles.descriptionBox, { height: readMore ? null : 100 }]}>
+						<View style={[styles.descriptionBox, readMore ? null : { height: 88 }]}>
 							<Text style={styles.description}>
 								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium
 								alias assumenda atque blanditiis consequatur culpa deleniti earum eius excepturi illum, in itaque
 								numquam quia quidem, quod sunt suscipit vero!
 							</Text>
-							{
-								readMore
-									?
-									null
-									:
-									<TouchableOpacity style={styles.readMore} onPress={() => this.readMoreFunc()}>
-										<Text style={styles.readMoreTitle}>Devamını Oku</Text>
-									</TouchableOpacity>
-							}
+						</View>
+						{
+							readMore
+								?
+								null
+								:
+								<TouchableOpacity style={styles.readMore} onPress={() => this.readMoreFunc()}>
+									<Text style={styles.readMoreTitle}>Devamını Oku</Text>
+								</TouchableOpacity>
+						}
+						<View style={styles.gallery}>
+							<View style={styles.galleryBox}>
+								<TouchableOpacity style={styles.galleryImgBtn}>
+									<Image source={DetailImage} style={styles.galleryImg}/>
+								</TouchableOpacity>
+							</View>
+							<View style={[styles.galleryBox, styles.galleryBoxSmall]}>
+								<TouchableOpacity style={[styles.galleryImgBtn, styles.galleryImgBtnSmall]}>
+									<Image source={DetailImage} style={styles.galleryImg}/>
+								</TouchableOpacity>
+								<TouchableOpacity style={[styles.galleryImgBtn, styles.galleryImgBtnSmall]}>
+									<Image source={DetailImage} style={styles.galleryImg}/>
+								</TouchableOpacity>
+								<TouchableOpacity style={[styles.galleryImgBtn, styles.galleryImgBtnSmall]}>
+									<Image source={DetailImage} style={styles.galleryImg}/>
+								</TouchableOpacity>
+								<TouchableOpacity style={[styles.galleryImgBtn, styles.galleryImgBtnSmall]}>
+									<LinearGradient style={styles.moreImgBox} colors={[theme.color2, theme.color8]}>
+										<View style={styles.moreImageIconBox}>
+											<BackIcon fill="white" style={styles.moreImageIcon}/>
+										</View>
+										<Text style={styles.moreImgCount}>21 daha</Text>
+									</LinearGradient>
+								</TouchableOpacity>
+							</View>
 						</View>
 					</View>
 				</ScrollView>

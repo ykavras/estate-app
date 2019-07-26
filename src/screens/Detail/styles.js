@@ -84,7 +84,7 @@ export default StyleSheet.create({
 		width: 40,
 		height: 40,
 		borderRadius: 20,
-		backgroundColor: theme.color4,
+		backgroundColor: 'rgba(216,230,244,0.5)',
 		alignItems: 'center',
 		justifyContent: 'center',
 		padding: 10
@@ -96,14 +96,15 @@ export default StyleSheet.create({
 	},
 	scrollView: {
 		...ifIphoneX({
-			paddingBottom: 100,
+			paddingBottom: 200,
 		}, {
 			paddingBottom: 90
 		})
 	},
 	imgWrapper: {
 		height: height / 2,
-		justifyContent: 'flex-end'
+		justifyContent: 'flex-end',
+		//display: 'none'
 	},
 	img: {
 		position: 'absolute',
@@ -191,5 +192,58 @@ export default StyleSheet.create({
 		fontSize: 14,
 		fontFamily: theme.fontMedium,
 		color: theme.color8,
+	},
+	gallery: {
+		height: 90,
+		marginHorizontal: - 4,
+		flexDirection: 'row',
+		flexWrap: 'wrap'
+	},
+	galleryBox: {
+		flex: 1,
+		flexDirection: 'row',
+		flexWrap: 'wrap'
+	},
+	galleryBoxSmall: {},
+	galleryImgBtn: {
+		width: '100%',
+		padding: 4
+	},
+	galleryImgBtnSmall: {
+		width: '50%',
+	},
+	galleryImg: {
+		width: '100%',
+		height: '100%',
+		resizeMode: 'cover',
+		borderRadius: 6
+	},
+	moreImage: {},
+	moreImgBox: {
+		borderRadius: 6,
+		justifyContent: 'center',
+		alignItems: 'center',
+		flex: 1
+	},
+	moreImageIconBox: {
+		width: 40,
+		height: 40,
+		borderRadius: 20,
+		backgroundColor: 'rgba(216,230,244,0.5)',
+		alignItems: 'center',
+		justifyContent: 'center',
+		padding: 10
+	},
+	moreImageIcon: {
+		width: '100%',
+		height: '100%',
+		resizeMode: 'contain',
+		transform: [{ rotateY: '180deg' }]
+	},
+	moreImgCount: {
+		fontFamily: theme.fontRegular,
+		fontSize: 12,
+		color: theme.color1,
+		paddingTop: 6
 	},
 });
