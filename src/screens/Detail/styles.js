@@ -24,8 +24,8 @@ export default StyleSheet.create({
 		...ifIphoneX({
 			paddingTop: 50
 		}, {
-			paddingTop: 30
-		})
+				paddingTop: 30
+			})
 	},
 	bottomFix: {
 		position: 'absolute',
@@ -45,8 +45,8 @@ export default StyleSheet.create({
 			height: 100,
 			paddingBottom: 10
 		}, {
-			height: 80
-		})
+				height: 80
+			})
 	},
 	bottomFixInfo: {
 		flexDirection: 'row',
@@ -96,10 +96,10 @@ export default StyleSheet.create({
 	},
 	scrollView: {
 		...ifIphoneX({
-			paddingBottom: 200,
+			paddingBottom: 100,
 		}, {
-			paddingBottom: 90
-		})
+				paddingBottom: 90
+			})
 	},
 	imgWrapper: {
 		height: height / 2,
@@ -183,10 +183,11 @@ export default StyleSheet.create({
 		fontFamily: theme.fontRegular,
 		fontSize: 16,
 		paddingTop: 15,
-		color: theme.color5
+		color: theme.color5,
+		marginBottom: 10,
 	},
 	readMore: {
-		paddingVertical: 10
+		paddingBottom: 10
 	},
 	readMoreTitle: {
 		fontSize: 14,
@@ -194,23 +195,28 @@ export default StyleSheet.create({
 		color: theme.color8,
 	},
 	gallery: {
-		height: 90,
+		height: 180,
 		marginHorizontal: - 4,
 		flexDirection: 'row',
 		flexWrap: 'wrap'
 	},
 	galleryBox: {
-		flex: 1,
+		width: '50%',
+		height: '100%',
 		flexDirection: 'row',
 		flexWrap: 'wrap'
 	},
-	galleryBoxSmall: {},
+	galleryBoxSmall: {
+
+	},
 	galleryImgBtn: {
 		width: '100%',
+		height: '100%',
 		padding: 4
 	},
 	galleryImgBtnSmall: {
 		width: '50%',
+		height: '50%',
 	},
 	galleryImg: {
 		width: '100%',
@@ -223,7 +229,8 @@ export default StyleSheet.create({
 		borderRadius: 6,
 		justifyContent: 'center',
 		alignItems: 'center',
-		flex: 1
+		width: '100%',
+		height: '100%',
 	},
 	moreImageIconBox: {
 		width: 40,
@@ -245,5 +252,23 @@ export default StyleSheet.create({
 		fontSize: 12,
 		color: theme.color1,
 		paddingTop: 6
+	},
+	properTitle: {
+		fontSize: 20,
+		color: theme.color7,
+		fontFamily: theme.fontSemiBold,
+		paddingBottom: 5
+	},
+	properList: {
+		flexDirection: 'row',
+		flexWrap: 'wrap'
+	},
+	property: {
+		fontSize: 14,
+		fontFamily: theme.fontRegular,
+		color: theme.color7,
+		opacity: 0.6,
+		width: '50%',
+		paddingVertical: 5
 	},
 });

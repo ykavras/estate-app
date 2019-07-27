@@ -16,6 +16,7 @@ import CubeIcon from '../../assets/icons/Cube';
 import LocationIcon from '../../assets/icons/Location';
 import CallIcon from '../../assets/icons/Call';
 import MessageIcon from '../../assets/icons/Message';
+import FloorPlan from '../../components/FloorPlan';
 
 class Detail extends Component {
 	constructor(props) {
@@ -33,37 +34,37 @@ class Detail extends Component {
 		const { readMore } = this.state;
 		return (
 			<View style={styles.wrapper}>
-				<StatusBar barStyle="light-content"/>
+				<StatusBar barStyle="light-content" />
 				<View style={styles.topButtons}>
 					<TouchableOpacity style={styles.button}>
-						<BackIcon fill="white" style={styles.buttonIcon}/>
+						<BackIcon fill="white" style={styles.buttonIcon} />
 					</TouchableOpacity>
 					<TouchableOpacity style={styles.button}>
-						<BackIcon fill="white" style={styles.buttonIcon}/>
+						<BackIcon fill="white" style={styles.buttonIcon} />
 					</TouchableOpacity>
 				</View>
 				<View style={styles.bottomFix}>
 					<View style={styles.bottomFixInfo}>
-						<Image source={DetailImage} style={styles.bottomFixInfoImg}/>
+						<Image source={DetailImage} style={styles.bottomFixInfoImg} />
 						<Text style={styles.bottomFixInfoText}>Ege Yapım</Text>
 					</View>
 					<View style={styles.bottomFixBtns}>
 						<TouchableOpacity style={[styles.bottomFixBtn, { marginRight: 10 }]}>
-							<MessageIcon fill={theme.color8} style={styles.bottomFixBtnIcon}/>
+							<MessageIcon fill={theme.color8} style={styles.bottomFixBtnIcon} />
 						</TouchableOpacity>
 						<TouchableOpacity style={styles.bottomFixBtn}>
-							<CallIcon fill={theme.color8} style={styles.bottomFixBtnIcon}/>
+							<CallIcon fill={theme.color8} style={styles.bottomFixBtnIcon} />
 						</TouchableOpacity>
 					</View>
 				</View>
 				<ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollView}>
 					<View style={styles.imgWrapper}>
-						<Image source={DetailImage} style={styles.img}/>
+						<Image source={DetailImage} style={styles.img} />
 						<LinearGradient style={styles.imgFooter} colors={['transparent', theme.color7]}>
 							<Text style={styles.price}>250.000 ₺</Text>
 							<TouchableOpacity style={styles.btn360}>
 								<Text style={styles.btn360Title}>360 Görünüm</Text>
-								<CubeIcon fill="black" style={styles.btn360Icon}/>
+								<CubeIcon fill="black" style={styles.btn360Icon} />
 							</TouchableOpacity>
 						</LinearGradient>
 					</View>
@@ -71,10 +72,10 @@ class Detail extends Component {
 						<Text style={styles.name}>Maslak 1453</Text>
 						<Text style={styles.title}>Doğayla iç içe bütünleşmiş bir hayat</Text>
 						<View style={styles.address}>
-							<LocationIcon fill={theme.color5} style={styles.location}/>
+							<LocationIcon fill={theme.color5} style={styles.location} />
 							<Text style={styles.addressText}>Göztepe caddesi, İstanbul / Maslak</Text>
 						</View>
-						<View style={[styles.descriptionBox, readMore ? null : { height: 88 }]}>
+						<View style={[styles.descriptionBox, readMore ? null : { height: 98 }]}>
 							<Text style={styles.description}>
 								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium
 								alias assumenda atque blanditiis consequatur culpa deleniti earum eius excepturi illum, in itaque
@@ -93,27 +94,39 @@ class Detail extends Component {
 						<View style={styles.gallery}>
 							<View style={styles.galleryBox}>
 								<TouchableOpacity style={styles.galleryImgBtn}>
-									<Image source={DetailImage} style={styles.galleryImg}/>
+									<Image source={DetailImage} style={styles.galleryImg} />
 								</TouchableOpacity>
 							</View>
 							<View style={[styles.galleryBox, styles.galleryBoxSmall]}>
 								<TouchableOpacity style={[styles.galleryImgBtn, styles.galleryImgBtnSmall]}>
-									<Image source={DetailImage} style={styles.galleryImg}/>
+									<Image source={DetailImage} style={styles.galleryImg} />
 								</TouchableOpacity>
 								<TouchableOpacity style={[styles.galleryImgBtn, styles.galleryImgBtnSmall]}>
-									<Image source={DetailImage} style={styles.galleryImg}/>
+									<Image source={DetailImage} style={styles.galleryImg} />
 								</TouchableOpacity>
 								<TouchableOpacity style={[styles.galleryImgBtn, styles.galleryImgBtnSmall]}>
-									<Image source={DetailImage} style={styles.galleryImg}/>
+									<Image source={DetailImage} style={styles.galleryImg} />
 								</TouchableOpacity>
 								<TouchableOpacity style={[styles.galleryImgBtn, styles.galleryImgBtnSmall]}>
 									<LinearGradient style={styles.moreImgBox} colors={[theme.color2, theme.color8]}>
 										<View style={styles.moreImageIconBox}>
-											<BackIcon fill="white" style={styles.moreImageIcon}/>
+											<BackIcon fill="white" style={styles.moreImageIcon} />
 										</View>
 										<Text style={styles.moreImgCount}>21 daha</Text>
 									</LinearGradient>
 								</TouchableOpacity>
+							</View>
+						</View>
+						<FloorPlan />
+						<View style={styles.properties}>
+							<Text style={styles.properTitle}>Kolaylıklar</Text>
+							<View style={styles.properList}>
+								<Text style={styles.property}>• Barbeque</Text>
+								<Text style={styles.property}>• Dryer</Text>
+								<Text style={styles.property}>• Barbeque</Text>
+								<Text style={styles.property}>• Dryer</Text>
+								<Text style={styles.property}>• Window Covering</Text>
+								<Text style={styles.property}>• Refrigerator</Text>
 							</View>
 						</View>
 					</View>
