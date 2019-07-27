@@ -1,3 +1,4 @@
+/* eslint-disable react/self-closing-comp */
 import React, { Component } from 'react';
 import {
 	View,
@@ -8,10 +9,12 @@ import {
 	ScrollView
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import Mapview, { Marker } from 'react-native-maps';
 import styles from './styles';
 import theme from '../../lib/theme';
 import DetailImage from '../../assets/img/detail-img.jpg';
 import BackIcon from '../../assets/icons/Back';
+import HeartIcon from '../../assets/icons/Heart';
 import CubeIcon from '../../assets/icons/Cube';
 import LocationIcon from '../../assets/icons/Location';
 import CallIcon from '../../assets/icons/Call';
@@ -22,7 +25,11 @@ class Detail extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			readMore: false
+			readMore: false,
+			latLng: {
+				latitude: 37.78825,
+				longitude: - 122.4324,
+			}
 		};
 	}
 
@@ -31,40 +38,42 @@ class Detail extends Component {
 	};
 
 	render() {
-		const { readMore } = this.state;
+		const { readMore, latLng } = this.state;
 		return (
 			<View style={styles.wrapper}>
-				<StatusBar barStyle="light-content" />
+				<StatusBar barStyle="light-content"/>
 				<View style={styles.topButtons}>
 					<TouchableOpacity style={styles.button}>
-						<BackIcon fill="white" style={styles.buttonIcon} />
+						<BackIcon fill="white" style={styles.buttonIcon}/>
 					</TouchableOpacity>
 					<TouchableOpacity style={styles.button}>
-						<BackIcon fill="white" style={styles.buttonIcon} />
+						<HeartIcon fill="white" style={styles.buttonIcon}/>
 					</TouchableOpacity>
 				</View>
 				<View style={styles.bottomFix}>
 					<View style={styles.bottomFixInfo}>
-						<Image source={DetailImage} style={styles.bottomFixInfoImg} />
+						<Image source={DetailImage} style={styles.bottomFixInfoImg}/>
 						<Text style={styles.bottomFixInfoText}>Ege Yapım</Text>
 					</View>
 					<View style={styles.bottomFixBtns}>
 						<TouchableOpacity style={[styles.bottomFixBtn, { marginRight: 10 }]}>
-							<MessageIcon fill={theme.color8} style={styles.bottomFixBtnIcon} />
+							<MessageIcon fill={theme.color8} style={styles.bottomFixBtnIcon}/>
 						</TouchableOpacity>
 						<TouchableOpacity style={styles.bottomFixBtn}>
-							<CallIcon fill={theme.color8} style={styles.bottomFixBtnIcon} />
+							<CallIcon fill={theme.color8} style={styles.bottomFixBtnIcon}/>
 						</TouchableOpacity>
 					</View>
 				</View>
-				<ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollView}>
+				<ScrollView
+					showsVerticalScrollIndicator={false}
+					contentContainerStyle={styles.scrollView}>
 					<View style={styles.imgWrapper}>
-						<Image source={DetailImage} style={styles.img} />
+						<Image source={DetailImage} style={styles.img}/>
 						<LinearGradient style={styles.imgFooter} colors={['transparent', theme.color7]}>
 							<Text style={styles.price}>250.000 ₺</Text>
 							<TouchableOpacity style={styles.btn360}>
 								<Text style={styles.btn360Title}>360 Görünüm</Text>
-								<CubeIcon fill="black" style={styles.btn360Icon} />
+								<CubeIcon fill="black" style={styles.btn360Icon}/>
 							</TouchableOpacity>
 						</LinearGradient>
 					</View>
@@ -72,7 +81,7 @@ class Detail extends Component {
 						<Text style={styles.name}>Maslak 1453</Text>
 						<Text style={styles.title}>Doğayla iç içe bütünleşmiş bir hayat</Text>
 						<View style={styles.address}>
-							<LocationIcon fill={theme.color5} style={styles.location} />
+							<LocationIcon fill={theme.color5} style={styles.location}/>
 							<Text style={styles.addressText}>Göztepe caddesi, İstanbul / Maslak</Text>
 						</View>
 						<View style={[styles.descriptionBox, readMore ? null : { height: 98 }]}>
@@ -94,30 +103,30 @@ class Detail extends Component {
 						<View style={styles.gallery}>
 							<View style={styles.galleryBox}>
 								<TouchableOpacity style={styles.galleryImgBtn}>
-									<Image source={DetailImage} style={styles.galleryImg} />
+									<Image source={DetailImage} style={styles.galleryImg}/>
 								</TouchableOpacity>
 							</View>
 							<View style={[styles.galleryBox, styles.galleryBoxSmall]}>
 								<TouchableOpacity style={[styles.galleryImgBtn, styles.galleryImgBtnSmall]}>
-									<Image source={DetailImage} style={styles.galleryImg} />
+									<Image source={DetailImage} style={styles.galleryImg}/>
 								</TouchableOpacity>
 								<TouchableOpacity style={[styles.galleryImgBtn, styles.galleryImgBtnSmall]}>
-									<Image source={DetailImage} style={styles.galleryImg} />
+									<Image source={DetailImage} style={styles.galleryImg}/>
 								</TouchableOpacity>
 								<TouchableOpacity style={[styles.galleryImgBtn, styles.galleryImgBtnSmall]}>
-									<Image source={DetailImage} style={styles.galleryImg} />
+									<Image source={DetailImage} style={styles.galleryImg}/>
 								</TouchableOpacity>
 								<TouchableOpacity style={[styles.galleryImgBtn, styles.galleryImgBtnSmall]}>
 									<LinearGradient style={styles.moreImgBox} colors={[theme.color2, theme.color8]}>
 										<View style={styles.moreImageIconBox}>
-											<BackIcon fill="white" style={styles.moreImageIcon} />
+											<BackIcon fill="white" style={styles.moreImageIcon}/>
 										</View>
 										<Text style={styles.moreImgCount}>21 daha</Text>
 									</LinearGradient>
 								</TouchableOpacity>
 							</View>
 						</View>
-						<FloorPlan />
+						<FloorPlan/>
 						<View style={styles.properties}>
 							<Text style={styles.properTitle}>Kolaylıklar</Text>
 							<View style={styles.properList}>
@@ -128,6 +137,19 @@ class Detail extends Component {
 								<Text style={styles.property}>• Window Covering</Text>
 								<Text style={styles.property}>• Refrigerator</Text>
 							</View>
+						</View>
+						<View style={styles.mapWrapper}>
+							<Text style={styles.properTitle}>Konum</Text>
+							<Mapview initialRegion={{
+								latitude: 37.78825,
+								longitude: - 122.4324,
+								latitudeDelta: 0.0922,
+								longitudeDelta: 0.0421,
+							}} style={styles.map}>
+								<Marker coordinate={latLng}>
+									<LocationIcon fill="green" style={styles.markerIcon}/>
+								</Marker>
+							</Mapview>
 						</View>
 					</View>
 				</ScrollView>

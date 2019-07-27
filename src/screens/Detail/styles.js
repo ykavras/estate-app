@@ -24,8 +24,8 @@ export default StyleSheet.create({
 		...ifIphoneX({
 			paddingTop: 50
 		}, {
-				paddingTop: 30
-			})
+			paddingTop: 30
+		})
 	},
 	bottomFix: {
 		position: 'absolute',
@@ -45,8 +45,8 @@ export default StyleSheet.create({
 			height: 100,
 			paddingBottom: 10
 		}, {
-				height: 80
-			})
+			height: 80
+		})
 	},
 	bottomFixInfo: {
 		flexDirection: 'row',
@@ -98,8 +98,8 @@ export default StyleSheet.create({
 		...ifIphoneX({
 			paddingBottom: 100,
 		}, {
-				paddingBottom: 90
-			})
+			paddingBottom: 90
+		})
 	},
 	imgWrapper: {
 		height: height / 2,
@@ -206,9 +206,7 @@ export default StyleSheet.create({
 		flexDirection: 'row',
 		flexWrap: 'wrap'
 	},
-	galleryBoxSmall: {
-
-	},
+	galleryBoxSmall: {},
 	galleryImgBtn: {
 		width: '100%',
 		height: '100%',
@@ -257,7 +255,8 @@ export default StyleSheet.create({
 		fontSize: 20,
 		color: theme.color7,
 		fontFamily: theme.fontSemiBold,
-		paddingBottom: 5
+		paddingBottom: 5,
+		marginTop: 10
 	},
 	properList: {
 		flexDirection: 'row',
@@ -270,5 +269,19 @@ export default StyleSheet.create({
 		opacity: 0.6,
 		width: '50%',
 		paddingVertical: 5
+	},
+	mapWrapper: {
+		borderTopWidth: 1,
+		borderColor: 'rgba(0,0,0,0.2)',
+		marginTop: 20
+	},
+	map: {
+		height: 120,
+		borderRadius: 6
+	},
+	markerIcon: {
+		width: 30,
+		height: 30,
+		resizeMode: 'contain'
 	},
 });
