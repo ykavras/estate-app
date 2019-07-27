@@ -20,6 +20,7 @@ import LocationIcon from '../../assets/icons/Location';
 import CallIcon from '../../assets/icons/Call';
 import MessageIcon from '../../assets/icons/Message';
 import FloorPlan from '../../components/FloorPlan';
+import { Amenities, BottomFix } from "../../components";
 
 class Detail extends Component {
 	constructor(props) {
@@ -50,20 +51,7 @@ class Detail extends Component {
 						<HeartIcon fill="white" style={styles.buttonIcon}/>
 					</TouchableOpacity>
 				</View>
-				<View style={styles.bottomFix}>
-					<View style={styles.bottomFixInfo}>
-						<Image source={DetailImage} style={styles.bottomFixInfoImg}/>
-						<Text style={styles.bottomFixInfoText}>Ege Yapım</Text>
-					</View>
-					<View style={styles.bottomFixBtns}>
-						<TouchableOpacity style={[styles.bottomFixBtn, { marginRight: 10 }]}>
-							<MessageIcon fill={theme.color8} style={styles.bottomFixBtnIcon}/>
-						</TouchableOpacity>
-						<TouchableOpacity style={styles.bottomFixBtn}>
-							<CallIcon fill={theme.color8} style={styles.bottomFixBtnIcon}/>
-						</TouchableOpacity>
-					</View>
-				</View>
+				<BottomFix/>
 				<ScrollView
 					showsVerticalScrollIndicator={false}
 					contentContainerStyle={styles.scrollView}>
@@ -127,17 +115,7 @@ class Detail extends Component {
 							</View>
 						</View>
 						<FloorPlan/>
-						<View style={styles.properties}>
-							<Text style={styles.properTitle}>Kolaylıklar</Text>
-							<View style={styles.properList}>
-								<Text style={styles.property}>• Barbeque</Text>
-								<Text style={styles.property}>• Dryer</Text>
-								<Text style={styles.property}>• Barbeque</Text>
-								<Text style={styles.property}>• Dryer</Text>
-								<Text style={styles.property}>• Window Covering</Text>
-								<Text style={styles.property}>• Refrigerator</Text>
-							</View>
-						</View>
+						<Amenities/>
 						<View style={styles.mapWrapper}>
 							<Text style={styles.properTitle}>Konum</Text>
 							<Mapview initialRegion={{
