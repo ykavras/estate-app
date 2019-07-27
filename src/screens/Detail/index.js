@@ -1,4 +1,3 @@
-/* eslint-disable react/self-closing-comp */
 import React, { Component } from 'react';
 import {
 	View,
@@ -17,10 +16,7 @@ import BackIcon from '../../assets/icons/Back';
 import HeartIcon from '../../assets/icons/Heart';
 import CubeIcon from '../../assets/icons/Cube';
 import LocationIcon from '../../assets/icons/Location';
-import CallIcon from '../../assets/icons/Call';
-import MessageIcon from '../../assets/icons/Message';
-import FloorPlan from '../../components/FloorPlan';
-import { Amenities, BottomFix } from "../../components";
+import { Amenities, BottomFix, FloorPlan, Galleries } from '../../components';
 
 class Detail extends Component {
 	constructor(props) {
@@ -29,7 +25,7 @@ class Detail extends Component {
 			readMore: false,
 			latLng: {
 				latitude: 37.78825,
-				longitude: - 122.4324,
+				longitude: -122.4324,
 			}
 		};
 	}
@@ -88,39 +84,14 @@ class Detail extends Component {
 									<Text style={styles.readMoreTitle}>Devamını Oku</Text>
 								</TouchableOpacity>
 						}
-						<View style={styles.gallery}>
-							<View style={styles.galleryBox}>
-								<TouchableOpacity style={styles.galleryImgBtn}>
-									<Image source={DetailImage} style={styles.galleryImg}/>
-								</TouchableOpacity>
-							</View>
-							<View style={[styles.galleryBox, styles.galleryBoxSmall]}>
-								<TouchableOpacity style={[styles.galleryImgBtn, styles.galleryImgBtnSmall]}>
-									<Image source={DetailImage} style={styles.galleryImg}/>
-								</TouchableOpacity>
-								<TouchableOpacity style={[styles.galleryImgBtn, styles.galleryImgBtnSmall]}>
-									<Image source={DetailImage} style={styles.galleryImg}/>
-								</TouchableOpacity>
-								<TouchableOpacity style={[styles.galleryImgBtn, styles.galleryImgBtnSmall]}>
-									<Image source={DetailImage} style={styles.galleryImg}/>
-								</TouchableOpacity>
-								<TouchableOpacity style={[styles.galleryImgBtn, styles.galleryImgBtnSmall]}>
-									<LinearGradient style={styles.moreImgBox} colors={[theme.color2, theme.color8]}>
-										<View style={styles.moreImageIconBox}>
-											<BackIcon fill="white" style={styles.moreImageIcon}/>
-										</View>
-										<Text style={styles.moreImgCount}>21 daha</Text>
-									</LinearGradient>
-								</TouchableOpacity>
-							</View>
-						</View>
+						<Galleries/>
 						<FloorPlan/>
 						<Amenities/>
 						<View style={styles.mapWrapper}>
 							<Text style={styles.properTitle}>Konum</Text>
 							<Mapview initialRegion={{
 								latitude: 37.78825,
-								longitude: - 122.4324,
+								longitude: -122.4324,
 								latitudeDelta: 0.0922,
 								longitudeDelta: 0.0421,
 							}} style={styles.map}>
