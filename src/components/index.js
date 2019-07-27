@@ -5,3 +5,7 @@ export { default as FloorPlan } from './FloorPlan';
 export { default as BottomFix } from './BottomFix';
 export { default as Amenities } from './Amenities';
 export { default as Galleries } from './Galleries';
+export { default as Location } from './Location';
+export { default as ImageDetail } from './ImageDetail';
+export { default as MoreBtn } from './MoreBtn';
+export { default as TopButtons } from './TopButtons';

@@ -16,51 +16,40 @@ import BackIcon from '../../assets/icons/Back';
 import HeartIcon from '../../assets/icons/Heart';
 import CubeIcon from '../../assets/icons/Cube';
 import LocationIcon from '../../assets/icons/Location';
-import { Amenities, BottomFix, FloorPlan, Galleries } from '../../components';
+import {
+	Amenities,
+	BottomFix,
+	FloorPlan,
+	Galleries,
+	ImageDetail,
+	Location,
+	MoreBtn,
+	TopButtons
+} from '../../components';
 
 class Detail extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			readMore: false,
-			latLng: {
-				latitude: 37.78825,
-				longitude: -122.4324,
-			}
 		};
 	}
 
 	readMoreFunc = () => {
-		this.setState({ readMore: true });
+		this.setState({ readMore: !this.state.readMore });
 	};
 
 	render() {
-		const { readMore, latLng } = this.state;
+		const { readMore } = this.state;
 		return (
 			<View style={styles.wrapper}>
 				<StatusBar barStyle="light-content"/>
-				<View style={styles.topButtons}>
-					<TouchableOpacity style={styles.button}>
-						<BackIcon fill="white" style={styles.buttonIcon}/>
-					</TouchableOpacity>
-					<TouchableOpacity style={styles.button}>
-						<HeartIcon fill="white" style={styles.buttonIcon}/>
-					</TouchableOpacity>
-				</View>
+				<TopButtons/>
 				<BottomFix/>
 				<ScrollView
 					showsVerticalScrollIndicator={false}
 					contentContainerStyle={styles.scrollView}>
-					<View style={styles.imgWrapper}>
-						<Image source={DetailImage} style={styles.img}/>
-						<LinearGradient style={styles.imgFooter} colors={['transparent', theme.color7]}>
-							<Text style={styles.price}>250.000 ₺</Text>
-							<TouchableOpacity style={styles.btn360}>
-								<Text style={styles.btn360Title}>360 Görünüm</Text>
-								<CubeIcon fill="black" style={styles.btn360Icon}/>
-							</TouchableOpacity>
-						</LinearGradient>
-					</View>
+					<ImageDetail/>
 					<View style={styles.content}>
 						<Text style={styles.name}>Maslak 1453</Text>
 						<Text style={styles.title}>Doğayla iç içe bütünleşmiş bir hayat</Text>
@@ -76,30 +65,14 @@ class Detail extends Component {
 							</Text>
 						</View>
 						{
-							readMore
-								?
-								null
-								:
-								<TouchableOpacity style={styles.readMore} onPress={() => this.readMoreFunc()}>
-									<Text style={styles.readMoreTitle}>Devamını Oku</Text>
-								</TouchableOpacity>
+							readMore ?
+								<MoreBtn title="Devamını Kapat" onPress={() => this.readMoreFunc()}/> :
+								<MoreBtn title="Devamını Oku" onPress={() => this.readMoreFunc()}/>
 						}
 						<Galleries/>
 						<FloorPlan/>
 						<Amenities/>
-						<View style={styles.mapWrapper}>
-							<Text style={styles.properTitle}>Konum</Text>
-							<Mapview initialRegion={{
-								latitude: 37.78825,
-								longitude: -122.4324,
-								latitudeDelta: 0.0922,
-								longitudeDelta: 0.0421,
-							}} style={styles.map}>
-								<Marker coordinate={latLng}>
-									<LocationIcon fill="green" style={styles.markerIcon}/>
-								</Marker>
-							</Mapview>
-						</View>
+						<Location/>
 					</View>
 				</ScrollView>
 			</View>
