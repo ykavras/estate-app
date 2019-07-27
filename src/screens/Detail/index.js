@@ -2,19 +2,11 @@ import React, { Component } from 'react';
 import {
 	View,
 	StatusBar,
-	TouchableOpacity,
-	Image,
 	Text,
 	ScrollView
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
-import Mapview, { Marker } from 'react-native-maps';
 import styles from './styles';
 import theme from '../../lib/theme';
-import DetailImage from '../../assets/img/detail-img.jpg';
-import BackIcon from '../../assets/icons/Back';
-import HeartIcon from '../../assets/icons/Heart';
-import CubeIcon from '../../assets/icons/Cube';
 import LocationIcon from '../../assets/icons/Location';
 import {
 	Amenities,
